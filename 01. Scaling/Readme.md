@@ -44,6 +44,16 @@ As the user base grows, the database is moved to a dedicated server to allow ind
    - data is unstructured, or  there is no relational data.
    - only need to serialize and deserialize data (JSON, XML, YAML, etc.).
    - need to store a massive amount of data.
+ 
+  define:
+  - Serialization = converting an object/data into a format that can be stored or transmitted. (Object - JSON)
+  - Deserialization = converting the stored/transmitted data back into an object. (JSON - Object)
+  - example : 
+    object - Student s = new Student("Rahul", 20);
+    json formate - {
+        "name": "Rahul",
+        "age": 20
+      }
 
 ---
 
@@ -190,8 +200,19 @@ communication. It serves as a buffer and distributes asynchronous requests.
 
 ### Importance
 1. **Logging:** Tracks errors and system health.
-2. **Metrics:** Provides insights into performance and user activity.
-3. **Automation:** Streamlines testing, deployment, and scaling.
+   - Example:
+      DEBUG → detailed information
+      INFO  → normal activity
+      WARN  → something unusual
+      ERROR → something went wrong
+3. **Metrics:** Provides insights into performance and user activity. (How is it performing?)
+   - Example:
+      CPU Usage       = 75%
+      Memory Usage    = 60%
+      Requests/sec    = 1,500
+      Error Rate      = 2%
+      Response Time   = 120 ms
+5. **Automation:** Streamlines testing, deployment, and scaling. (Making the system perform tasks automatically without a person doing them manually.)
 
 ---
 
