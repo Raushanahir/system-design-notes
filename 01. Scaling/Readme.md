@@ -201,17 +201,17 @@ communication. It serves as a buffer and distributes asynchronous requests.
 ### Importance
 1. **Logging:** Tracks errors and system health.
    - Example:
-      DEBUG → detailed information
-      INFO  → normal activity
-      WARN  → something unusual
-      ERROR → something went wrong
+      - DEBUG → detailed information
+      - INFO  → normal activity
+      - WARN  → something unusual
+      - ERROR → something went wrong
 3. **Metrics:** Provides insights into performance and user activity. (How is it performing?)
    - Example:
-      CPU Usage       = 75%
-      Memory Usage    = 60%
-      Requests/sec    = 1,500
-      Error Rate      = 2%
-      Response Time   = 120 ms
+      - CPU Usage       = 75%
+      - Memory Usage    = 60%
+      - Requests/sec    = 1,500
+      - Error Rate      = 2%
+      - Response Time   = 120 ms
 5. **Automation:** Streamlines testing, deployment, and scaling. (Making the system perform tasks automatically without a person doing them manually.)
 
 ---
