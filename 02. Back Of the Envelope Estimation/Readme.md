@@ -96,3 +96,9 @@ Avoid ambiguity by labeling units (e.g., `5 MB` instead of `5`).
 - **Cache Requirements:** Evaluate memory requirements for caching.
 - **Number of Servers:** Calculate hardware needs based on workload.
 
+## Section 4: definition
+- **Methodology:** It is a defined approach that tells a team how to plan, build, test, and deliver software.
+- **Scalability:** It is a system's ability to handle a growing amount of work, user traffic, or data volume without losing performance or requiring a total redesign.
+- **Availability:** It means how much time a system is up and working when users need it.
+- **Ambiguity:** It means something has more than one possible meaning or interpretation, so it is not clear what exactly is meant.
+- **Retention:** It means how long data is kept before it is deleted or removed.
