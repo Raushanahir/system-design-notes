@@ -1,7 +1,8 @@
 # Chapter 4: Design a Rate Limiter
 
 ## Introduction
-This chapter explores the design and implementation of a rate limiter—a system component used to control traffic rates sent by clients or services. Rate limiters are crucial for preventing abuse, reducing costs, and ensuring the stability of server resources. Examples of their use include limiting posts, account creations, and reward claims.
+This chapter explores the design and implementation of a rate limiter—a system component used to control traffic rates sent by clients or services.Rate limiting means controlling how many requests a user can make within a certain time. Rate limiters are crucial for preventing abuse, reducing costs, and ensuring the stability of server resources. Examples of their use include limiting posts, account creations, and reward claims.
+
 
 ## Benefits of Rate Limiting
 - **Preventing DoS Attacks:** Blocking excess calls to avoid resource starvation.
@@ -39,7 +40,7 @@ This chapter explores the design and implementation of a rate limiter—a system
 - Evaluate current tech stack and choose efficient options.
 - Select appropriate algorithms based on business needs.
 - Use an API gateway if microservices are employed.
-- Opt for commercial solutions if resources are limited.
+- Opt for commercial solutions if resources are limited.(If your team doesn't have enough time, people, or expertise to build and maintain something, consider using an existing commercial/managed solution.)
 
 ## Step 3: Rate Limiting Algorithms
 ### 1. Token Bucket
@@ -48,9 +49,9 @@ This chapter explores the design and implementation of a rate limiter—a system
 </div>
 
 - **Description:** Tokens are added to a bucket at a fixed rate; each request consumes a token.
-- **Parameters:** Bucket size and refill rate.
+- **Parameters:** Bucket size(Maximum number of tokens the bucket can hold) and refill rate(How quickly new tokens are added.).
 - **Pros:** Easy to implement, memory-efficient, supports traffic bursts.
-- **Cons:** Requires careful parameter tuning.
+- **Cons:** Requires careful parameter tuning(Bucket size and refill rate).
 
 
 
@@ -60,8 +61,8 @@ This chapter explores the design and implementation of a rate limiter—a system
 </div>
 
 - **Description:** Processes requests at a fixed rate using a FIFO queue.
-- **Pros:** Memory-efficient, stable outflow rate.
-- **Cons:** Traffic bursts may delay recent requests.
+- **Pros:** Memory-efficient, stable outflow rate, Useful for APIs and distributed systems.
+- **Cons:** Traffic bursts may delay recent requests.(Example - 100 requests arrive at once and 5 request/sec)
   
 
   Example: https://github.com/uber-go/ratelimit
@@ -74,7 +75,7 @@ This chapter explores the design and implementation of a rate limiter—a system
 </div>
 
 - **Description:** Divides time into fixed intervals and uses counters to limit requests.
-- **Pros:** Simple, efficient for specific use cases.
+- **Pros:** Simple to implement, memory efficient, Easy to understand, Good for straightforward rate-limiting requirements.
 - **Cons:** Traffic spikes at window edges can exceed limits.
 
 - Sudden burst of traffic at the edges of time windows
@@ -88,7 +89,7 @@ could cause more requests than allowed quota to go through.
   <img src="./images/sliding-window-log.png"  alt="Sliding Window Log" width="550">
 </div>
 
-- **Description:** Tracks timestamps to allow a rolling time window.
+- **Description:** Tracks timestamps to allow a rolling time window.(store the timestamp of each request.)
 - **Pros:** Accurate rate limiting.
 - **Cons:** High memory consumption.
   
@@ -130,3 +131,22 @@ could cause more requests than allowed quota to go through.
 ### Monitoring
 - Regular analytics to ensure algorithm effectiveness and adjust rules as needed.
 
+## Definition
+- **DoS(Denial of Service) attack:** A DoS attack happens when an attacker sends a huge number of requests to a server so that it becomes slow or unavailable to normal users.
+- A server-side API is an API that runs on the server and allows other applications or clients to communicate with the server and access its functionality or data.
+- **Standalone Service:** The API runs as its own separate application/service.
+- **Application-Level Code:** The API is built inside an existing application.
+      <div>
+          Mobile App
+                ↓
+            Main Application
+               ├── User API
+               ├── Order API
+               └── Payment API
+                    ↓
+            Database
+    </div>
+- **Redis:** It is used to store the request counters because it is very fast.
+- **Race Condition:** A race condition happens when multiple requests access/update the same data simultaneously and the result depends on the timing.
+- **locks:** Only one process can modify this data at this moment.
+- **Redis Sorted Sets:** A Sorted Set can store request timestamps.
