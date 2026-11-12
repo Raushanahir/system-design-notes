@@ -169,12 +169,15 @@ By moving session data to a shared datastore, web servers become stateless. This
 2. **How it differs from "Stateful":**
    
 **Stateful:** If a user logs into Server A, Server A saves that user's session data in its own memory. If the user’s next request goes to Server B, Server B won't know who the user is.
+
 **Stateless:** If a user logs in, the session data is stored in a shared external database or cache (like Redis). Now, any server in the cluster can access that data to verify the user.
 
-4. **Why it is important (Benefits):**
+3. **Why it is important (Benefits):**
    
 **Scalability:** Because any server can handle any request, you can easily add or remove servers from your cluster based on traffic (Auto-scaling) without losing user sessions.
+
 **Reliability:** If one server crashes, the user’s session is not lost, because the data resides in a shared external store, not on the individual server.
+
 **Simplicity:** Load balancers can distribute traffic to any available server without needing "sticky sessions" (forcing a user to stay on the same server).
 
 ---
